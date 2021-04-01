@@ -1,7 +1,7 @@
 package com.github.kneotrino.employee;
 
-import com.github.kneotrino.employee.controller.PegawaiRestController;
-import com.github.kneotrino.employee.dto.PegawaiDto;
+import com.github.kneotrino.employee.controller.EmployeeRestController;
+import com.github.kneotrino.employee.dto.EmployeeDto;
 import javassist.NotFoundException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class PegawaiRestControllerTest {
 
     @Autowired
-    private PegawaiRestController controller;
+    private EmployeeRestController controller;
 
     @Test
     void contextLoads() {
@@ -37,22 +37,16 @@ class PegawaiRestControllerTest {
 
     @Test
     void postOne() throws NotFoundException, IOException {
-        PegawaiDto dto = new PegawaiDto();
-        dto.setNama("Kamyu Kamyu");
-        dto.setAlamat("Lagi Lagi");
+        EmployeeDto dto = new EmployeeDto();
         assertThat(controller.postOne(dto)).isNotNull();
     }
 
     @Test
     void putOneById() throws NotFoundException, IOException {
-        PegawaiDto dto = new PegawaiDto();
-        dto.setNama("Ganti ganti");
-        dto.setAlamat("tester tester");
+        EmployeeDto dto = new EmployeeDto();
 
-        PegawaiDto trackingDto = controller.putOneById(dto, 1L);
+        EmployeeDto trackingDto = controller.putOneById(dto, 1L);
         assertThat(trackingDto).isNotNull();
-        assertThat(trackingDto.getAlamat()).isEqualTo("tester tester");
-        assertThat(trackingDto.getNama()).isEqualTo("Ganti ganti");
     }
 
     @Test

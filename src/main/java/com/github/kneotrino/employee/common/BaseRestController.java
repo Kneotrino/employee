@@ -22,7 +22,7 @@ public interface BaseRestController<DTO> {
   @PutMapping("/{id}")
   DTO putOneById(@RequestBody DTO data, @PathVariable Long id) throws NotFoundException, IOException;
 
-  @PatchMapping("/{id}")
+  @PatchMapping("/restore/{id}")
   DTO restoreOneById(@PathVariable Long id) throws NotFoundException, IOException;
 
   @GetMapping("/all")
